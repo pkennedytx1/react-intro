@@ -1,12 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import { HelloWorld } from './HelloWorld';
+import { NameInput } from './NameInput';
+import { useState } from 'react';
 
 function App() {
-  const name = 'Patrick';
+  const [name, setName] = useState('Patrick')
   return (
     <div className="App">
-      <HelloWorld myName={name}/>
+      <HelloWorld myName={name} />
+      <NameInput setName={setName} />
     </div>
   );
 }
