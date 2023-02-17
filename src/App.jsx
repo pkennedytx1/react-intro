@@ -1,14 +1,18 @@
 import './App.css';
-import { HelloWorld } from './HelloWorld';
-import { NameInput } from './NameInput';
+import { CoffeeOrderForm } from './CoffeeOrderForm';
+import CoffeeOrders from './CoffeeOrders';
+import MakeOrder from './MakeOrder';
 import { useState } from 'react';
 
 function App() {
-  const [name, setName] = useState('Patrick')
+  const [coffeeOrders, setCoffeeOrders] = useState([])
+  console.log(coffeeOrders)
   return (
     <div className="App">
-      <HelloWorld myName={name} />
-      <NameInput setName={setName} />
+      <CoffeeOrders coffeeOrders={coffeeOrders} />
+      <CoffeeOrderForm setCoffeeOrders={setCoffeeOrders} coffeeOrders={coffeeOrders}/>
+      <br />
+      <MakeOrder coffeeOrders={coffeeOrders} setCoffeeOrders={setCoffeeOrders}/>
     </div>
   );
 }
