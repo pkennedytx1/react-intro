@@ -4,17 +4,19 @@ import CoffeeOrders from './CoffeeOrders';
 import MakeOrder from './MakeOrder';
 import RandomActivity from './RandomActivity';
 import { useState } from 'react';
+import { ThemeProvider } from './ThemeContext';
 
 function App() {
   const [coffeeOrders, setCoffeeOrders] = useState([])
-  console.log(coffeeOrders)
   return (
     <div className="App">
-      <CoffeeOrders coffeeOrders={coffeeOrders} />
-      <CoffeeOrderForm setCoffeeOrders={setCoffeeOrders} coffeeOrders={coffeeOrders}/>
-      <br />
-      <MakeOrder coffeeOrders={coffeeOrders} setCoffeeOrders={setCoffeeOrders}/>
-      <RandomActivity />
+      <ThemeProvider>
+        <CoffeeOrders coffeeOrders={coffeeOrders} />
+        <CoffeeOrderForm setCoffeeOrders={setCoffeeOrders} coffeeOrders={coffeeOrders}/>
+        <br />
+        <MakeOrder coffeeOrders={coffeeOrders} setCoffeeOrders={setCoffeeOrders}/>
+        <RandomActivity />
+      </ThemeProvider>
     </div>
   );
 }

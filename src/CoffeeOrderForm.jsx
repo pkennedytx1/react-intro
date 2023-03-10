@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { ThemeContext } from "./ThemeContext"
+import { Button } from './Button.styles';
 
 function CoffeeOrderForm(props) {
     const { setCoffeeOrders, coffeeOrders } = props
@@ -6,6 +8,8 @@ function CoffeeOrderForm(props) {
     const [errorMessage, setErrorMessage] = useState('')
     const [coffeeOrder, setCoffeeOrder] = useState('')
     const [coffeeErrorMessage, setCoffeeErrorMessage] = useState('')
+    const theme = useContext(ThemeContext);
+    console.log(theme);
     const processValue = () => {
         const validateStringRegex = /[a-z]/i
         if (!updatedName || !coffeeOrder) {
@@ -53,9 +57,9 @@ function CoffeeOrderForm(props) {
                 </select>
                 <span className='error-text'>{coffeeErrorMessage}</span>
             </div>
-            <button onClick={() => processValue()} >
+            <Button theme={theme} onClick={() => processValue()} >
                 Order Coffee
-            </button>
+            </Button>
         </>
     )
 }

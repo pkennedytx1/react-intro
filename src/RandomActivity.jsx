@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from 'axios'
+import { Button } from "./Button.styles";
+import { ThemeContext } from "./ThemeContext";
 
 function RandomActivity() {
     const [randomActivity, setRandomActivity] = useState({});
     const [trigger, setTrigger] = useState(false);
+    const theme = useContext(ThemeContext);
 
     useEffect(() => {
         getRandomActivity();
@@ -25,7 +28,7 @@ function RandomActivity() {
                 <h3>{randomActivity.activity || null}</h3>
                 {randomActivity.link && <a href={`${randomActivity.link}`}>Link to activity</a>}
             </div>
-            <button onClick={() => getRandomActivity()}>Generate Random Activity</button>
+            <Button theme={theme} onClick={() => getRandomActivity()}>Generate Random Activity</Button>
             <button onClick={() => setTrigger(!trigger)} >Trigger useeffect</button>
         </>
     )
