@@ -16,7 +16,7 @@ export const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
     return (
         <ThemeContext.Provider value={initialState}>
-            ({ children })
+            { children }
         </ThemeContext.Provider>
     )
 }

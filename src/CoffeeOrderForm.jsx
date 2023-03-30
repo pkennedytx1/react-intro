@@ -8,8 +8,9 @@ function CoffeeOrderForm(props) {
     const [errorMessage, setErrorMessage] = useState('')
     const [coffeeOrder, setCoffeeOrder] = useState('')
     const [coffeeErrorMessage, setCoffeeErrorMessage] = useState('')
+    const [isDisabled, setIsDisabled] = useState(true);
     const theme = useContext(ThemeContext);
-    console.log(theme);
+
     const processValue = () => {
         const validateStringRegex = /[a-z]/i
         if (!updatedName || !coffeeOrder) {
@@ -44,6 +45,12 @@ function CoffeeOrderForm(props) {
                     onChange={(e) => {
                         setErrorMessage('')
                         setUpdatedName(e.target.value)
+                        console.log(e.target.value);
+                        if (!e.target.value) {
+                            setIsDisabled(true);
+                        } else {
+                            setIsDisabled(false);
+                        }
                     }}
                 />
                 <span className='error-text'>{errorMessage}</span>
@@ -57,7 +64,7 @@ function CoffeeOrderForm(props) {
                 </select>
                 <span className='error-text'>{coffeeErrorMessage}</span>
             </div>
-            <Button theme={theme} onClick={() => processValue()} >
+            <Button disabled={isDisabled} theme={theme} onClick={() => processValue()} >
                 Order Coffee
             </Button>
         </>
